@@ -2,34 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>WebAR Mô Hình Chim - AR.js</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <title>Xem Video 360 Do</title>
+    <!-- Nhúng thư viện A-Frame xử lý xoay 360 độ trên điện thoại -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   </head>
-  <body style="margin: 0px; overflow: hidden;">
-    
-    <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;">
-      
+  <body>
+    <a-scene>
       <a-assets>
-        <a-asset-item id="bird-obj" src="./assets/12274_Lizard_v1_l2.obj"></a-asset-item>
-        <a-asset-item id="bird-mtl" src="./assets/12274_Lizard_v1_l2.mtl"></a-asset-item>
+        <!-- Gọi chính xác tên file video của bạn -->
+        <video id="video-360" src="video360.mp4" autoplay loop muted crossorigin="anonymous" playsinline webkit-playsinline></video>
       </a-assets>
-      
-      <a-marker preset="hiro">
-        
-        <a-obj-model 
-          src="#bird-obj" 
-          mtl="#bird-mtl" 
-          position="0 0 0" 
-          scale="0.05 0.05 0.05" 
-          rotation="-90 0 0">
-        </a-obj-model>
 
-      </a-marker>
-      
-      <a-entity camera></a-entity>
-      
+      <!-- Gắn video vào quả cầu không gian ảo -->
+      <a-videosphere src="#video-360" rotation="0 -90 0"></a-videosphere>
+
+      <!-- Camera tự động xoay theo cảm biến điện thoại -->
+      <a-camera look-controls></a-camera>
     </a-scene>
   </body>
 </html>
