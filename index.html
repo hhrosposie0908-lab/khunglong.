@@ -2,21 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Xem Video 360 Do</title>
-    <!-- Nhúng thư viện A-Frame xử lý xoay 360 độ trên điện thoại -->
+    <title>Video 360 Khung Long</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   </head>
   <body>
+    <div style="position: fixed; top: 10px; left: 10px; z-index: 999;">
+        <button onclick="document.querySelector('#video-360').play(); this.style.display='none';">BẤM VÀO ĐÂY ĐỂ XEM</button>
+    </div>
+
     <a-scene>
       <a-assets>
-        <!-- Gọi chính xác tên file video của bạn -->
-        <video id="video-360" src="video360.mp4" autoplay loop muted crossorigin="anonymous" playsinline webkit-playsinline></video>
+        <video id="video-360" src="video360.mp4" autoplay loop muted playsinline webkit-playsinline crossorigin="anonymous"></video>
       </a-assets>
-
-      <!-- Gắn video vào quả cầu không gian ảo -->
       <a-videosphere src="#video-360" rotation="0 -90 0"></a-videosphere>
-
-      <!-- Camera tự động xoay theo cảm biến điện thoại -->
       <a-camera look-controls></a-camera>
     </a-scene>
   </body>
